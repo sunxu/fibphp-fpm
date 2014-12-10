@@ -1,0 +1,9 @@
+install: sudo apt-get install cmake libev-dev check cvs libtool autoconf
+language: c
+script: "./ci/run_tests.sh"
+compiler:
+        - clang
+        - gcc
+env:
+        - BUILD_TYPE=RelWithDebInfo EIO="-DWANT_EIO=TRUE -DWANT_EMBEDDED_EIO=TRUE"
+        - BUILD_TYPE=RelWithDebInfo EIO="-DWANT_EIO=FALSE"

@@ -1,0 +1,92 @@
+libevfibers (0.4.1) unstable; urgency=low
+
+  * Fixed building with embedded libeio
+
+ -- Konstantin Olkhovskiy <kolkhovskiy@kolkhovskiy-laptop>  Thu, 13 Mar 2014 19:22:02 +0400
+
+libevfibers (0.4.0) unstable; urgency=low
+
+  * Added no-reclaim mode for a fiber
+  * Got rid of 128 bit integers in favour of packed struct
+  * Added fbr_ev_wait with timeout (fbr_ev_wait_to)
+  * Assert for a yield in the root fiber
+  * Added fbr_connect function and test case for it (thanks, Mikhail)
+  * Added fbr_buffer_reset method
+  * Implemented libeio support (configurable at build time)
+  * Debian package includes libeio support by default
+  * In-place download&build support for libeio (if it's missing on the system)
+  * Replaced libvrb with in-house implementation
+  * Fixed unit tests run inside of pbuilder (/dev/shm workaround)
+  * Support for cmake-level embedding into other cmake projects
+  * Default build type set to RelWithDebInfo
+  * Support for building with lto support
+  * Added fbr_system, fbr_popenN and fbr_waitpid calls
+  * Added fbr_send and fbr_recv wrappers
+  * Marked fiber memory pool APIs as deprecated
+  * Dropped usage of fiber memory pools in tests
+  * Valgrind is now an optional dependency
+  * Added travis-ci support
+  * Added missing build script (used in test coverage script)
+  * Changing license to Apache License, Version 2.0
+  * Improved fbr_ev_wait_one performance
+
+ -- Konstantin Olkhovskiy <kolkhovskiy@kolkhovskiy-laptop>  Thu, 13 Mar 2014 17:19:22 +0400
+
+libevfibers (0.3.0) unstable; urgency=low
+
+  * Fiber names are now gettable/settable
+  * Also a name is now an array, embedded into a fiber structure to simplify
+    memory management.
+  * Support for fiber-local storage
+  * fbr_reclaim fixes. Now when a fiber is reclaimed, it's filtered out from
+    the stack to make sure that fbr_yield will not ield to a reclaimed fiber.
+    Also fbr_reclaim of self will now never return.
+  * Switched fbr_need_log and fbr_set_log_level to static inline
+  * Now passing real fiber stack size to coro_create
+  * Added ``active'' flag to destructor. To support this I've also added static
+    and dynamic initializers for a destructor structure.
+  * Moved fbr_mutex, fbr_cond_var, fbr_buffer into public API to allow stack
+    allocation of these structures which should result in some speedup.
+  * Protected libev watchers with desctructors. Now when doing fbr_read a
+    destructor is set before fbr_ev_wait that will stop the watcher in case
+    fiber is reclaimed while we were waiting.
+  * ev_now() timestamp in default logger
+  * Fixed fbr_ev_wait_one behaviour to match documentation
+  * Added missing call of destructors upon fiber reclaim
+  * Added stack-allocatable destructor API
+  * More rethinking and reworking of the event facility (see 701e067)
+
+ -- Konstantin Olkhovskiy <kolkhovskiy@kolkhovskiy-laptop>  Sun, 12 May 2013 12:57:10 +0400
+
+libevfibers (0.2.0) unstable; urgency=low
+
+  * Dropped ``call'' and ``multicall'' interfaces alltogether
+  * Added fbr_ev_wait and corresponding machinery
+  * Added transactional ring buffer
+  * Implemented error subsystem with f_errno
+  * Fixed ABA problem with reclaimed fibers
+  * Added logging system
+  * Added conditional variables
+  * Minor utility additions to API
+  * Unit tests
+
+ -- Konstantin Olkhovskiy <lupus@lupus-desktop>  Sun, 09 Dec 2012 21:00:33 +0400
+
+libevfibers (0.1.2) unstable; urgency=low
+
+  * Fixed mutexes
+  * Some unit tests
+
+ -- Konstantin Olkhovskiy <lupus@lupus-desktop>  Sat, 13 Oct 2012 23:12:01 +0400
+
+libevfibers (0.1.1-1) unstable; urgency=low
+
+  * Backtrace capturing is now optional.
+
+ -- Konstantin Olkhovskiy <lupus@lupus-desktop>  Sat, 22 Sep 2012 18:30:40 +0400
+
+libevfibers (0.1.0-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Konstantin Olkhovskiy <lupus@oxnull.net>  Thu, 20 Sep 2012 21:26:32 +0400
