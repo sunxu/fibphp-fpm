@@ -1,0 +1,74 @@
+# Python files
+*.py[cod]
+
+# Object files
+*.o
+*.lo
+
+# Libraries
+*.lib
+*.a
+*.la
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Backup files
+*.swp
+*~
+
+# Tar files
+*.tar*
+
+# scons
+.sconsign.dblite
+
+# libev
+libev/Makefile.in
+libev/aclocal.m4
+libev/autom4te.cache/
+libev/config.guess
+libev/config.h.in
+libev/config.sub
+libev/configure
+libev/depcomp
+libev/install-sh
+libev/ltmain.sh
+libev/missing
+libev/.deps/
+libev/Makefile
+libev/config.h
+libev/config.log
+libev/config.status
+libev/libtool
+libev/stamp-h1
+libev/.libs/
+libev/ev.3
+
+# libeio
+libeio/Makefile.in
+libeio/aclocal.m4
+libeio/autom4te.cache/
+libeio/config.guess
+libeio/config.h.in
+libeio/config.sub
+libeio/configure
+libeio/install-sh
+libeio/ltmain.sh
+libeio/missing
+libeio/Makefile
+libeio/config.h
+libeio/config.log
+libeio/config.status
+libeio/libtool
+libeio/stamp-h1
+libeio/.libs/
+
